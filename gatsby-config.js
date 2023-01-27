@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Ca',
     description: 'A port of the casper blog built for gatsby',
-    siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
+    siteUrl: 'https://hwang-suntae.github.io', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml.name',
