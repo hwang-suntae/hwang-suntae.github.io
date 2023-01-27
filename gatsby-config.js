@@ -3,9 +3,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Ca',
-    description: 'A port of the casper blog built for gatsby',
-    siteUrl: 'https://hwang-suntae.github.io', // full path to blog - no ending slash
+    title: '우물쭈물하다 내 이럴줄 알았지🙃',
+    description: 'pozafly의 기술 블로그',
+    siteUrl: 'https://pozafly.github.io', // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml.name',

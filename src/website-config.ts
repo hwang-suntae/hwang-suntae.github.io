@@ -15,11 +15,11 @@ export type WebsiteConfig = {
   /**
    * full url, no username
    */
-  facebook?: string;
+  instagram?: string;
   /**
    * full url, no username
    */
-  twitter?: string;
+  github?: string;
   /**
    * hide or show all email subscribe boxes
    */
@@ -54,14 +54,15 @@ export type WebsiteConfig = {
 };
 
 const config: WebsiteConfig = {
-  title: 'Ghost',
-  description: 'The professional publishing platform',
-  coverImage: 'img/blog-cover.png',
-  logo: 'img/ghost-logo.png',
+  title: `Pozafly's 블로그`,
+  description: '우물쭈물하다 내 이럴줄 알았지🙃',
+  coverImage: 'img/common/back.png',
+  // coverImage: 'img/blog-cover.png',
+  logo: 'img/common/pozafly.png',
   lang: 'en',
   siteUrl: 'https://gatsby-casper.netlify.com',
-  facebook: 'https://www.facebook.com/ghost',
-  twitter: 'https://twitter.com/tryghost',
+  instagram: 'https://www.facebook.com/ghost',
+  github: 'https://twitter.com/tryghost',
   showSubscribe: true,
   mailchimpAction:
     'https://twitter.us19.list-manage.com/subscribe/post?u=a89b6987ac248c81b0b7f3a0f&amp;id=7d777b7d75',

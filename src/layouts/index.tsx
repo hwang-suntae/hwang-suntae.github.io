@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Global, css } from '@emotion/react';
 import { lighten } from 'polished';
 
-import favicon from '../../src/favicon.ico';
+import favicon from '../content/img/common/alien.png';
 import { colors } from '../styles/colors';
 
 type IndexProps = {
@@ -293,7 +293,8 @@ function IndexLayout(props: IndexProps) {
 
           ::selection {
             text-shadow: none;
-            background: ${lighten('0.3', colors.blue)};
+            /* background: ${lighten('0.3', colors.blue)}; */
+            background: ${lighten('0.001', '#3498db')};
           }
 
           hr {

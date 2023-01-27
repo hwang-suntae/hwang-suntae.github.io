@@ -27,9 +27,11 @@ export function PostCard({ post, isLarge = false }: PostCardProps) {
 
   return (
     <article
-      className={`post-card ${post.frontmatter.image ? '' : 'no-image'} ${
-        isLarge ? 'post-card-large' : ''
-      }`}
+      // className={`post-card ${post.frontmatter.image ? '' : 'no-image'} ${
+      //   isLarge ? 'post-card-large' : ''
+      //   }`}
+      className={`post-card ${post.frontmatter.image ? '' : 'no-image'} ${isLarge ? 'post-card-large' : ''
+        }`}
       css={[PostCardStyles, isLarge && PostCardLarge]}
     >
       {post.frontmatter.image && (
@@ -213,7 +215,7 @@ const PostCardTitle = styled.h2`
 `;
 
 const PostCardExcerpt = styled.section`
-  font-family: Georgia, serif;
+  /* font-family: Georgia, serif; */
 
   @media (prefers-color-scheme: dark) {
     /* color: color(var(--midgrey) l(+10%)); */

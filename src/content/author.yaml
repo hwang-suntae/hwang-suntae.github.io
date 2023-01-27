@@ -1,8 +1,8 @@
 - name: Ghost
   avatar: avatars/ghost.png
   bio: The professional publishing platform
-  twitter: TryGhost
-  facebook: ghost
+  github: TryGhost
+  instagram: ghost
   website: https://ghost.org/
   location: San Francisco
 - name: Another Author
@@ -13,3 +13,10 @@
   website: https://ghost.org/
   location: San Francisco
   profile_image: img/alex-knight-326705-unsplash.jpg
+- name: Pozafly
+  avatar: img/common/pozafly.png
+  bio: Frontend Developer
+  github: TryGhost
+  instagram: ghost
+  website: https://pozafly.github.io
+  location: Seoul
