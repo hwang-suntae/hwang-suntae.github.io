@@ -76,6 +76,7 @@ function IndexPage(props: IndexProps) {
         )}
         <meta property="og:image:width" content={width?.toString()} />
         <meta property="og:image:height" content={height?.toString()} />
+        <meta name="google-site-verification" content="X7fnDr_T5GGmrn97A919fAd2I_t2ghdL_ZkDjcR1Y8Q" />
       </Helmet>
       <Wrapper>
         <div
@@ -110,6 +111,7 @@ function IndexPage(props: IndexProps) {
                 (post, index) =>
                   // filter out drafts in production
                   (post.node.frontmatter.draft !== true ||
+                    post.node.frontmatter.tags[0] !== 'Diary' &&
                     process.env.NODE_ENV !== 'production') && (
                     <PostCard key={post.node.fields.slug} post={post.node} isLarge={index === 0} />
                   ),
@@ -145,7 +147,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
-      filter: { frontmatter: { draft: { ne: true } } }
+      filter: { frontmatter: { draft: { ne: true }, tags: { ne: "Diary" } } }
       limit: $limit
       skip: $skip
     ) {

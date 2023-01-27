@@ -85,8 +85,8 @@ function Author({ data, location }: AuthorTemplateProps) {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${author.name} - ${config.title}`} />
         <meta property="og:url" content={config.siteUrl + location.pathname} />
-        <meta property="article:publisher" content="https://www.instagram.com/ghost" />
-        <meta property="article:author" content="https://www.instagram.com/ghost" />
+        <meta property="article:publisher" content="https://www.instagram.com/pozafly_" />
+        <meta property="article:author" content="https://www.instagram.com/pozafly_" />
         <meta name="github:card" content="summary" />
         <meta name="github:title" content={`${author.name} - ${config.title}`} />
         <meta name="github:url" content={config.siteUrl + location.pathname} />

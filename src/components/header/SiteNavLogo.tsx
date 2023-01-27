@@ -47,6 +47,10 @@ const SiteNavLogoStyles = css`
   letter-spacing: -0.5px;
   text-transform: none;
 
+  @media (max-width: 700px) {
+    margin-right: 18px;
+  }
+
   :hover {
     text-decoration: none;
   }

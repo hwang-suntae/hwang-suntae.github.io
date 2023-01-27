@@ -23,7 +23,7 @@ type SiteNavState = {
   showTitle: boolean;
 };
 
-class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
+class SiteNav extends React.PureComponent<SiteNavProps, SiteNavState> {
   subscribe = React.createRef<SubscribeModal>();
   titleRef = React.createRef<HTMLSpanElement>();
   lastScrollY = 0;
@@ -85,8 +85,8 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
       <>
         {config.showSubscribe && <SubscribeModal ref={this.subscribe} />}
         <nav css={SiteNavStyles}>
-          <SiteNavLeft className="site-nav-left">
-            {!isHome && <SiteNavLogo />}
+          <SiteNavLeft className={`site-nav-left ${isHome ? 'is-home' : ''}`}>
+            <SiteNavLogo />
             <SiteNavContent css={[this.state.showTitle ? HideNav : '']}>
               <ul css={NavStyles} role="menu">
                 <li role="menuitem">
@@ -97,6 +97,16 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
                 <li role="menuitem">
                   <Link to="/about" activeClassName="nav-current" className={`${isHome ? 'is-home' : ''}`}>
                     About
+                  </Link>
+                </li>
+                <li role="menuitem">
+                  <Link to="/tags" activeClassName="nav-current" className={`${isHome ? 'is-home' : ''}`}>
+                    Tags
+                  </Link>
+                </li>
+                <li role="menuitem">
+                  <Link to="/tags/diary/" activeClassName="nav-current" className={`${isHome ? 'is-home' : ''}`}>
+                    Diary
                   </Link>
                 </li>
               </ul>
@@ -152,11 +162,6 @@ export const SiteNavMain = css`
   z-index: 1000;
   backdrop-filter: blur(8px);
   background: transparent;
-
-  @media (max-width: 700px) {
-    padding-right: 0;
-    padding-left: 0;
-  }
 `;
 
 const SiteNavStyles = css`
@@ -188,7 +193,6 @@ const SiteNavLeft = styled.div`
 
   @media (max-width: 700px) {
     margin-right: 0;
-    padding-left: 5vw;
   }
 `;
 
@@ -222,6 +226,9 @@ const NavStyles = css`
     transition: opacity 0.35s ease-in-out;
     @media (prefers-color-scheme: dark) {
       color: #fff;
+    }
+    @media (max-width: 700px) {
+      padding: 14px 8px;
     }
   }
 
@@ -304,7 +311,7 @@ const NavPostTitle = styled.span`
   top: 9px;
   color: #000;
   font-size: 1.7rem;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: none;
   opacity: 0;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
@@ -314,7 +321,6 @@ const NavPostTitle = styled.span`
   }
 
   @media (max-width: 700px) {
-    font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
