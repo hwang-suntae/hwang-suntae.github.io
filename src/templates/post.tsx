@@ -20,6 +20,7 @@ import { colors } from '../styles/colors';
 import { inner, outer, SiteMain } from '../styles/shared';
 import config from '../website-config';
 import { AuthorList } from '../components/AuthorList';
+import Utterances from '../components/Utterances';
 
 export type Author = {
   name: string;
@@ -235,6 +236,7 @@ function PageTemplate({ data, pageContext, location }: PageTemplateProps) {
               {/* The big email subscribe modal content */}
               {config.showSubscribe && <Subscribe title={config.title} />}
             </article>
+            <Utterances repo="pozafly/blog-comments" />
           </div>
         </main>
 
@@ -285,7 +287,7 @@ export const NoImage = css`
 export const PostFullHeader = styled.header`
   position: relative;
   margin: 0 auto;
-  padding: 70px 170px 50px;
+  padding: 70px 100px 50px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 
@@ -318,7 +320,7 @@ const PostFullTags = styled.section`
 const PostFullCustomExcerpt = styled.p`
   margin: 20px 0 0;
   color: var(--midgrey);
-  font-size: 2.3rem;
+  font-size: 2rem;
   line-height: 1.4em;
   font-weight: 360;
 
@@ -414,8 +416,7 @@ export const PostFullTitle = styled.h1`
 
 const PostFullImage = styled.figure`
   margin: 25px auto 50px;
-  /* height: 800px; */
-  /* background: ${colors.lightgrey} center center; */
+  max-height: 800px;
   background-size: cover;
   width: 80%;
   border-radius: 8px;
@@ -430,6 +431,7 @@ const PostFullImage = styled.figure`
   }
 
   @media (max-width: 800px) {
+    width: 100%;
     height: 400px;
   }
   @media (max-width: 500px) {
@@ -474,7 +476,7 @@ export const query = graphql`
     relatedPosts: allMarkdownRemark(
       filter: { frontmatter: { tags: { in: [$primaryTag] }, draft: { ne: true } } }
       limit: 5
-      sort: { frontmatter: { date: ASC } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       totalCount
       edges {

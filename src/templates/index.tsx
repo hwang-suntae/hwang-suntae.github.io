@@ -144,7 +144,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { frontmatter: { date: ASC } }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { draft: { ne: true } } }
       limit: $limit
       skip: $skip
@@ -229,11 +229,11 @@ const HomePosts = css`
     }
 
     .post-card-large .post-card-content-link {
-      padding: 0 0 0 40px;
+      /* padding: 0 0 0 40px; */
     }
 
     .post-card-large .post-card-meta {
-      padding: 0 0 0 40px;
+      /* padding: 0 0 0 40px; */
     }
 
     .post-card-large .post-card-excerpt p {

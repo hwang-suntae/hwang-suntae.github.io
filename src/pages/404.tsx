@@ -41,7 +41,7 @@ function NotFoundPage(props: NotFoundTemplateProps) {
             <section style={{ textAlign: 'center' }}>
               <ErrorCode>404</ErrorCode>
               <ErrorDescription>Page not found</ErrorDescription>
-              <Link css={ErrorLink} to="/">
+              <Link css={ErrorLink} to="/" className="error-front-page">
                 Go to the front page →
               </Link>
             </section>

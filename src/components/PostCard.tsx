@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { kebabCase } from 'lodash';
 import { lighten } from 'polished';
 import React from 'react';
+import _ from 'lodash';
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -49,25 +50,26 @@ export function PostCard({ post, isLarge = false }: PostCardProps) {
         </Link>
       )}
       <PostCardContent className="post-card-content">
+        {post.frontmatter.tags && config.showAllTags && (
+          <PostCardPrimaryTag className="post-card-primary-tag">
+            {post.frontmatter.tags.map((tag, idx) => (
+              <React.Fragment key={tag}>
+                {idx > 0 && <>, &nbsp;</>}
+                <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+              </React.Fragment>
+            ))}
+          </PostCardPrimaryTag>
+        )}
+        {post.frontmatter.tags && !config.showAllTags && (
+          <PostCardPrimaryTag className="post-card-primary-tag">
+            <Link to={`/tags/${kebabCase(post.frontmatter.tags[0])}/`}>
+              {post.frontmatter.tags[0]}
+            </Link>
+          </PostCardPrimaryTag>
+        )}
         <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
           <PostCardHeader className="post-card-header">
-            {post.frontmatter.tags && config.showAllTags && (
-              <PostCardPrimaryTag className="post-card-primary-tag">
-                {post.frontmatter.tags.map((tag, idx) => (
-                  <React.Fragment key={tag}>
-                    {idx > 0 && <>, &nbsp;</>}
-                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                  </React.Fragment>
-                ))}
-              </PostCardPrimaryTag>
-            )}
-            {post.frontmatter.tags && !config.showAllTags && (
-              <PostCardPrimaryTag className="post-card-primary-tag">
-                <Link to={`/tags/${kebabCase(post.frontmatter.tags[0])}/`}>
-                  {post.frontmatter.tags[0]}
-                </Link>
-              </PostCardPrimaryTag>
-            )}
+
             <PostCardTitle className="post-card-title">{post.frontmatter.title}</PostCardTitle>
           </PostCardHeader>
           <PostCardExcerpt className="post-card-excerpt">
@@ -136,6 +138,7 @@ const PostCardLarge = css`
     .post-card-content {
       flex: 0 1 361px;
       justify-content: center;
+      padding: 0 0 0 40px;
     }
 
     .post-card-title {
@@ -144,11 +147,11 @@ const PostCardLarge = css`
     }
 
     .post-card-content-link {
-      padding: 0 0 0 40px;
+      
     }
 
     .post-card-meta {
-      padding: 0 0 0 40px;
+      /* padding: 0 0 0 40px; */
     }
 
     .post-card-excerpt p {
@@ -169,7 +172,7 @@ const PostCardImageLink = css`
 const PostCardImage = styled.div`
   width: auto;
   height: 200px;
-  background: ${colors.lightgrey} no-repeat center center;
+  background: #fff no-repeat center center;
   background-size: cover;
 
   @media (prefers-color-scheme: dark) {
@@ -195,7 +198,7 @@ const PostCardContentLink = css`
 `;
 
 const PostCardPrimaryTag = styled.div`
-  margin: 0 0 0.2em;
+  margin: 15px 0 0.2em;
   /* color: var(--blue); */
   color: ${colors.blue};
   font-size: 1.2rem;
@@ -215,8 +218,7 @@ const PostCardTitle = styled.h2`
 `;
 
 const PostCardExcerpt = styled.section`
-  /* font-family: Georgia, serif; */
-
+  font-size: 1.6rem;
   @media (prefers-color-scheme: dark) {
     /* color: color(var(--midgrey) l(+10%)); */
     color: ${lighten('0.1', colors.midgrey)} !important;
@@ -236,7 +238,7 @@ const PostCardBylineContent = styled.div`
   margin: 4px 0 0 10px;
   /* color: color(var(--midgrey) l(+10%)); */
   color: ${lighten('0.1', colors.midgrey)};
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.4em;
   font-weight: 400;
   letter-spacing: 0.2px;
@@ -260,7 +262,7 @@ const PostCardBylineContent = styled.div`
 `;
 
 const PostCardHeader = styled.header`
-  margin: 15px 0 0;
+  /* margin: 15px 0 0; */
 `;
 
 export const StaticAvatar = css`

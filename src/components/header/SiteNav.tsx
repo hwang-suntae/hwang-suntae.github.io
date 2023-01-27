@@ -90,12 +90,12 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
             <SiteNavContent css={[this.state.showTitle ? HideNav : '']}>
               <ul css={NavStyles} role="menu">
                 <li role="menuitem">
-                  <Link to="/" activeClassName="nav-current">
+                  <Link to="/" activeClassName="nav-current" className={`${isPost ? 'is-post' : ''}`}>
                     Home
                   </Link>
                 </li>
                 <li role="menuitem">
-                  <Link to="/about" activeClassName="nav-current">
+                  <Link to="/about" activeClassName="nav-current" className={`${isPost ? 'is-post' : ''}`}>
                     About
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
             <SocialLinks>
               {config.instagram && (
                 <a
-                  className="social-link-fb"
+                  className={`${isPost ? 'is-post' : ''}`}
                   css={[SocialLink, SocialLinkFb]}
                   href={config.instagram}
                   target="_blank"
@@ -123,6 +123,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
               )}
               {config.github && (
                 <a
+                  className={`${isPost ? 'is-post' : ''}`}
                   css={SocialLink}
                   href={config.github}
                   title="Github"
@@ -149,8 +150,8 @@ export const SiteNavMain = css`
   right: 0;
   left: 0;
   z-index: 1000;
-  /* background: color(var(--darkgrey) l(-5%)) */
-  background: ${darken('0.05', colors.darkgrey)};
+  backdrop-filter: blur(8px);
+  background: transparent;
 
   @media (max-width: 700px) {
     padding-right: 0;
@@ -212,9 +213,10 @@ const NavStyles = css`
   }
 
   li a {
+    font-size: 1.2rem;
     position: relative;
     display: block;
-    padding: 12px 12px;
+    padding: 14px 12px;
     color: #fff;
     opacity: 0.8;
     transition: opacity 0.35s ease-in-out;
@@ -242,6 +244,19 @@ const NavStyles = css`
     opacity: 0.5;
   }
 
+  li a.is-post {
+    color: #000;
+    &:before {
+      background: #000;
+    }
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+      &:before {
+        background: #fff;
+      }
+    }
+  }
+
   .nav-current {
     opacity: 1;
   }
@@ -256,7 +271,7 @@ const SiteNavRight = styled.div`
   height: 64px;
 
   @media (max-width: 700px) {
-    display: none;
+    /* display: none; */
   }
 `;
 
@@ -287,13 +302,24 @@ const NavPostTitle = styled.span`
   visibility: hidden;
   position: absolute;
   top: 9px;
-  color: #fff;
+  color: #000;
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: none;
   opacity: 0;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   transform: translateY(175%);
+  @media (prefers-color-scheme: dark) {
+    color: #fff;
+  }
+
+  @media (max-width: 700px) {
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(100vw - 172px);
+  }
 
   .dash {
     left: -25px;

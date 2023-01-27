@@ -62,20 +62,20 @@ function IndexLayout(props: IndexProps) {
           dt,
           dd,
           ol,
-          ul,
-          li,
+          /* ul,
+          li, */
           fieldset,
           form,
           label,
           legend,
-          table,
+          /* table,
           caption,
           tbody,
           tfoot,
           thead,
           tr,
           th,
-          td,
+          td, */
           article,
           aside,
           canvas,
@@ -100,11 +100,19 @@ function IndexLayout(props: IndexProps) {
             padding: 0;
             border: 0;
             font: inherit;
-            font-size: 100%;
+            font-size: 93%;
             vertical-align: baseline;
+
+            .copyright {
+              font-size: 1.4rem;
+            }
+            .error-front-page {
+              font-size: 1.6rem;
+            }
           }
           body {
             line-height: 1;
+            word-break: keep-all;
           }
           ol,
           ul {
@@ -276,8 +284,7 @@ function IndexLayout(props: IndexProps) {
           body {
             overflow-x: hidden;
             color: ${lighten('-0.3', colors.midgrey)};
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-              Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans','Ubuntu','Droid Sans','Helvetica Neue',sans-serif;
             font-size: 1.6rem;
             line-height: 1.6em;
             font-weight: 400;

@@ -30,7 +30,7 @@ function PostContent({ htmlAst }: PostContentProps) {
 export const PostFullContent = styled.section`
   position: relative;
   margin: 0 auto;
-  padding: 0 170px 6vw;
+  padding: 0 100px 6vw;
   min-height: 230px;
   /* font-family: Georgia, serif; */
   font-size: 2rem;
@@ -97,19 +97,19 @@ export const PostFullContent = styled.section`
 
   a {
     /* color: var(--darkgrey); */
-    color: ${colors.darkgrey};
+    color: ${colors.blue};
     word-break: break-word;
     /* box-shadow: var(--darkgrey) 0 -1px 0 inset; */
-    box-shadow: ${colors.darkgrey} 0 -1px 0 inset;
+    box-shadow: ${colors.blue} 0 -1px 0 inset;
     transition: all 0.2s ease-in-out;
   }
 
   a:hover {
     /* color: var(--blue); */
-    color: ${colors.blue};
+    color: ${colors.darkgrey};
     text-decoration: none;
     /* box-shadow: var(--blue) 0 -1px 0 inset; */
-    box-shadow: ${colors.blue} 0 -1px 0 inset;
+    box-shadow: ${colors.darkgrey} 0 -1px 0 inset;
   }
 
   strong,
@@ -126,9 +126,11 @@ export const PostFullContent = styled.section`
   img,
   video {
     display: block;
-    margin: 1.5em auto;
-    max-width: 1040px;
+    margin: 2em auto;
+    max-width: 840px;
     height: auto;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0 23px;
   }
   @media (max-width: 1040px) {
     img,
@@ -184,10 +186,11 @@ export const PostFullContent = styled.section`
     /* background: var(--whitegrey); */
     background: ${colors.whitegrey};
     border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans','Ubuntu','Droid Sans','Helvetica Neue',sans-serif;
   }
 
   p code {
-    word-break: break-all;
+    word-break: keep-all;
   }
 
   pre {
@@ -257,8 +260,7 @@ export const PostFullContent = styled.section`
   h6 {
     /* color: color(var(--darkgrey) l(-5%)); */
     color: ${lighten('-0.05', colors.darkgrey)};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans','Ubuntu','Droid Sans','Helvetica Neue',sans-serif;
   }
 
   h1 {
@@ -378,8 +380,7 @@ export const PostFullContent = styled.section`
     width: auto;
     border-spacing: 0;
     border-collapse: collapse;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans','Ubuntu','Droid Sans','Helvetica Neue',sans-serif;
     font-size: 1.6rem;
     white-space: nowrap;
     vertical-align: top;
@@ -448,8 +449,12 @@ export const PostFullContent = styled.section`
     }
 
     a {
-      color: #fff;
-      box-shadow: inset 0 -1px 0 #fff;
+      color: #26a6ed;
+      box-shadow: inset 0 -1px 0 #26a6ed;
+      &:hover {
+        color: #fff;
+        box-shadow: inset 0 -1px 0 #fff;
+      }
     }
 
     strong {
@@ -581,6 +586,10 @@ export const PostFullContent = styled.section`
     white-space: normal;
   }
 
+  .token {
+    font-size: 1.4rem;
+  }
+
   .token.attr-name {
     color: rgb(173, 219, 103);
     font-style: italic;
@@ -670,6 +679,7 @@ export const PostFullContent = styled.section`
   .gatsby-highlight pre[class*='language-'] {
     float: left;
     min-width: 100%;
+    font-size: 1.5rem;
   }
   /* End Syntax Highlighting */
 `;

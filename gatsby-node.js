@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {
       allMarkdownRemark(
         limit: 2000
-        sort: { frontmatter: { date: ASC } }
+        sort: { frontmatter: { date: DESC } }
         filter: { frontmatter: { draft: { ne: true } } }
       ) {
         edges {
@@ -116,7 +116,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create paginated index
   // TODO: new pagination
-  const postsPerPage = 1000;
+  const postsPerPage = 9;
   const numPages = Math.ceil(posts.length / postsPerPage);
 
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -163,12 +163,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagTemplate = path.resolve('./src/templates/tags.tsx');
   const tags = _.uniq(
     _.flatten(
-      result.data.allMarkdownRemark.edges.map(edge =>
-        _.castArray(_.get(edge, 'node.frontmatter.tags', [])),
-      ),
-    ),
+      result.data.allMarkdownRemark.edges.map((edge) =>
+        _.castArray(_.get(edge, 'node.frontmatter.tags', []))
+      )
+    )
   );
-  tags.forEach(tag => {
+  tags.forEach((tag) => {
     createPage({
       path: `/tags/${_.kebabCase(tag)}/`,
       component: tagTemplate,
@@ -180,7 +180,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create author pages
   const authorTemplate = path.resolve('./src/templates/author.tsx');
-  result.data.allAuthorYaml.edges.forEach(edge => {
+  result.data.allAuthorYaml.edges.forEach((edge) => {
     createPage({
       path: `/author/${_.kebabCase(edge.node.name)}/`,
       component: authorTemplate,

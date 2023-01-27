@@ -24,7 +24,7 @@ export const SiteNavMain = css`
   left: 0;
   z-index: 1000;
   /* background: color(var(--darkgrey) l(-5%)); */
-  background: ${lighten('-0.05', colors.darkgrey)};
+  /* background: ${lighten('-0.05', colors.darkgrey)}; */
 `;
 
 export const SiteMain = css`
@@ -98,6 +98,17 @@ export const SocialLink = css`
     height: 1.8rem;
     fill: #fff;
   }
+
+  &.is-post {
+    svg {
+      fill: #000;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        fill: #fff;
+      }
+    }
+  }
 `;
 
 export const SocialLinkFb = css`
@@ -127,6 +138,13 @@ export const SiteHeaderStyles = css`
   /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
   background: ${lighten('-0.05', colors.darkgrey)} no-repeat center center;
   background-size: cover;
+  height: 35rem;
+  @media (max-width: 780px) {
+    height: 28rem;
+  }
+  @media (max-width: 500px) {
+    height: 25rem;
+  }
 
   :before {
     content: '';
@@ -137,8 +155,7 @@ export const SiteHeaderStyles = css`
     left: 0;
     z-index: 10;
     display: block;
-    /* background: rgba(0, 0, 0, 0.18); */
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, 0.18);
   }
   :after {
     content: '';
@@ -150,13 +167,15 @@ export const SiteHeaderStyles = css`
     z-index: 10;
     display: block;
     height: 100%;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0)); */
-    background: linear-gradient(rgba(0,0,0,.15),#191b1f);
+    background: linear-gradient(rgba(0,0,0,.15),#fff);
   }
 
   @media (prefers-color-scheme: dark) {
     :before {
       background: rgba(0, 0, 0, 0.6);
+    }
+    :after {
+      background: linear-gradient(rgba(0,0,0,0.02),#191b1f);
     }
   }
 `;

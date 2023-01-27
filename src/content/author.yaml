@@ -16,7 +16,11 @@
 - name: Pozafly
   avatar: img/common/pozafly.png
   bio: Frontend Developer
-  github: TryGhost
-  instagram: ghost
+  github: pozafly
+  instagram: pozafly_
   website: https://pozafly.github.io
   location: Seoul
+
+  # github: TryGhost
+  # instagram: ghost
+  # profile_image: img/sample/alex.jpg
