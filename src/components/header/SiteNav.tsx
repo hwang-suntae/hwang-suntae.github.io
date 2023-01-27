@@ -90,12 +90,12 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
             <SiteNavContent css={[this.state.showTitle ? HideNav : '']}>
               <ul css={NavStyles} role="menu">
                 <li role="menuitem">
-                  <Link to="/" activeClassName="nav-current" className={`${isPost ? 'is-post' : ''}`}>
+                  <Link to="/" activeClassName="nav-current" className={`${isHome ? 'is-home' : ''}`}>
                     Home
                   </Link>
                 </li>
                 <li role="menuitem">
-                  <Link to="/about" activeClassName="nav-current" className={`${isPost ? 'is-post' : ''}`}>
+                  <Link to="/about" activeClassName="nav-current" className={`${isHome ? 'is-home' : ''}`}>
                     About
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
             <SocialLinks>
               {config.instagram && (
                 <a
-                  className={`${isPost ? 'is-post' : ''}`}
+                  className={`${isHome ? 'is-home' : ''}`}
                   css={[SocialLink, SocialLinkFb]}
                   href={config.instagram}
                   target="_blank"
@@ -123,7 +123,7 @@ class SiteNav extends React.Component<SiteNavProps, SiteNavState> {
               )}
               {config.github && (
                 <a
-                  className={`${isPost ? 'is-post' : ''}`}
+                  className={`${isHome ? 'is-home' : ''}`}
                   css={SocialLink}
                   href={config.github}
                   title="Github"
@@ -217,9 +217,12 @@ const NavStyles = css`
     position: relative;
     display: block;
     padding: 14px 12px;
-    color: #fff;
+    color: #000;
     opacity: 0.8;
     transition: opacity 0.35s ease-in-out;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
   }
 
   li a:hover {
@@ -234,9 +237,12 @@ const NavStyles = css`
     bottom: 8px;
     left: 12px;
     height: 1px;
-    background: #fff;
+    background: #000;
     opacity: 0.25;
     transition: all 0.35s ease-in-out;
+    @media (prefers-color-scheme: dark) {
+      background: #fff;
+    }
   }
 
   li a:hover:before {
@@ -244,16 +250,10 @@ const NavStyles = css`
     opacity: 0.5;
   }
 
-  li a.is-post {
-    color: #000;
+  li a.is-home {
+    color: #fff;
     &:before {
-      background: #000;
-    }
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-      &:before {
-        background: #fff;
-      }
+      background: #fff;
     }
   }
 

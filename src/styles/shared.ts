@@ -7,7 +7,7 @@ import { colors } from './colors';
 
 export const outer = css`
   position: relative;
-  padding: 0 5vw;
+  /* padding: 0 5vw; */
 `;
 
 // Centered content container blocks
@@ -23,6 +23,8 @@ export const SiteNavMain = css`
   right: 0;
   left: 0;
   z-index: 1000;
+  backdrop-filter: blur(8px);
+  background: transparent;
   /* background: color(var(--darkgrey) l(-5%)); */
   /* background: ${lighten('-0.05', colors.darkgrey)}; */
 `;
@@ -96,17 +98,15 @@ export const SocialLink = css`
 
   svg {
     height: 1.8rem;
-    fill: #fff;
+    fill: #000;
+    @media (prefers-color-scheme: dark) {
+      fill: #fff;
+    }
   }
 
-  &.is-post {
+  &.is-home {
     svg {
-      fill: #000;
-    }
-    @media (prefers-color-scheme: dark) {
-      svg {
-        fill: #fff;
-      }
+      fill: #fff;
     }
   }
 `;
