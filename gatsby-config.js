@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Casper',
+    title: 'Gatsby Ca',
     description: 'A port of the casper blog built for gatsby',
     siteUrl: 'https://gatsby-casper.netlify.com', // full path to blog - no ending slash
   },
@@ -80,7 +80,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(edge => ({
+              allMarkdownRemark.edges.map((edge) => ({
                 ...edge.node.frontmatter,
                 description: edge.node.excerpt,
                 date: edge.node.frontmatter.date,
@@ -118,7 +118,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-postcss',
       options: {
-        postCssPlugins: [require('postcss-color-function'), require('cssnano')()],
+        postCssPlugins: [
+          require('postcss-color-function'),
+          require('cssnano')(),
+        ],
       },
     },
     {
