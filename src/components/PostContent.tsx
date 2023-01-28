@@ -129,7 +129,7 @@ export const PostFullContent = styled.section`
     margin: 2em auto;
     max-width: 840px;
     height: auto;
-    border-radius: 15px;
+    border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 23px;
   }
   @media (max-width: 1040px) {
